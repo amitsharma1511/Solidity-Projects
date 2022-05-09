@@ -20,10 +20,10 @@ contract JustDoItTokens is ERC721, ERC721Enumerable, ERC721URIStorage {
         require(userNftCount[msg.sender] < 5, "You cannot mint more than 5 NFT");
         uint256 tokenId = _tokenIdCounter.current();
         require(tokenId <= MAX_SUPPLY, "Nothing left, all NFTs have been minted");
+        userNftCount[msg.sender]++;
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
-        userNftCount[msg.sender]++;
     }
 
     // The following functions are overrides required by Solidity.
