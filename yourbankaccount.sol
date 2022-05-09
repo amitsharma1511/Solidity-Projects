@@ -6,10 +6,12 @@ contract YourSmartBank {
     
     uint256 totalContractBalance;
 
+    receive() external payable { }
+
     mapping (address => uint256) accountBalance;
     
     function getContractBalance() public view returns(uint256) {
-        return totalContractBalance;
+        return address(this).balance;
     }
 
     function addBalance() public payable {
@@ -23,11 +25,13 @@ contract YourSmartBank {
     }
 
     // Avoids Re-Entrancy
-    function withdraw(uint256 _amountToWithdraw) public payable {
+    function withdraw(uint256 _amountToWithdraw) public {
         require(_amountToWithdraw <= getBalance(), "Insufficient balance in account");
         accountBalance[msg.sender] -= _amountToWithdraw;
         totalContractBalance -= _amountToWithdraw;
         payable(msg.sender).transfer(_amountToWithdraw);    
     }
+
+    fallback() external payable { }
 
 }
