@@ -6,6 +6,9 @@ contract YourSmartBank {
     
     uint256 totalContractBalance;
 
+    event AddBalance(address indexed fromAddress, uint256 amountDeposited);
+    event WithdrawAmount(address indexed toAddress, uint256 amountWithdrawn);
+
     receive() external payable { }
 
     mapping (address => uint256) accountBalance;
@@ -18,6 +21,7 @@ contract YourSmartBank {
         require(msg.value > 0, "Enter a valid amount");
         accountBalance[msg.sender] += msg.value;
         totalContractBalance += msg.value;
+        emit AddBalance(msg.sender, msg.value);
     }
 
     function getBalance() public view returns (uint256) {
@@ -29,7 +33,8 @@ contract YourSmartBank {
         require(_amountToWithdraw <= getBalance(), "Insufficient balance in account");
         accountBalance[msg.sender] -= _amountToWithdraw;
         totalContractBalance -= _amountToWithdraw;
-        payable(msg.sender).transfer(_amountToWithdraw);    
+        payable(msg.sender).transfer(_amountToWithdraw);
+        emit WithdrawAmount(msg.sender, _amountToWithdraw);  
     }
 
     fallback() external payable { }
