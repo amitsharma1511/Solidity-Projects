@@ -30,7 +30,9 @@ contract YourSmartBank {
     event AddBalance(address indexed fromAddress, uint256 amountDeposited);
     event WithdrawAmount(address indexed toAddress, uint256 amountWithdrawn);
 
-    receive() external payable { }
+    receive() external payable {
+        revert("Cannot send ETH, only payable fucntion are allowed to send");
+     }
 
     mapping (address => uint256) accountBalance;
     
@@ -59,6 +61,8 @@ contract YourSmartBank {
         emit WithdrawAmount(msg.sender, _amountToWithdraw);
     }
 
-    fallback() external payable { }
+    fallback() external payable {
+        revert("Cannot send ETH, only payable fucntion are allowed to send");
+     }
 
 }
