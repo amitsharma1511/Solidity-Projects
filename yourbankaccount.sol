@@ -53,12 +53,11 @@ contract YourSmartBank {
     // Avoids Re-Entrancy
     function withdraw(uint256 _amountToWithdraw) public nonReentrant {
 
-        if (_amountToWithdraw <= getBalance()) {
-            accountBalance[msg.sender] -= _amountToWithdraw;
-        }
-        
+        require(_amountToWithdraw <= getBalance(), "Insufficient Funds");
+        accountBalance[msg.sender] -= _amountToWithdraw;
         payable(msg.sender).transfer(_amountToWithdraw);
         emit WithdrawAmount(msg.sender, _amountToWithdraw);
+        
     }
 
     fallback() external payable {
