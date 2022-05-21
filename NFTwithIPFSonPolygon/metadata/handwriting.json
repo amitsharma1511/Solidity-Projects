@@ -1,0 +1,12 @@
+{
+    "name" : "Amit's Handwriting",
+    "description": "A hand written text by Amit Sharma",
+    "image" : "https://ipfs.io/ipfs/QmUrVqkrYzAJFv4fYkLgg6axqBYKPmMyFMcT97gEjKGmF8",
+    "attributes" : [
+        {
+            "trait_type": "Cursive",
+            "value" : 10,
+            "max_value" : 10
+        }
+    ]
+}
