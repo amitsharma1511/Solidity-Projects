@@ -6,6 +6,8 @@ contract YourSmartBank {
 
     uint256 private constant _NOT_ENTERED = 1;
     uint256 private constant _ENTERED = 2;
+    
+    error cannotSendEth();
 
     uint256 private _status;
 
@@ -31,7 +33,7 @@ contract YourSmartBank {
     event WithdrawAmount(address indexed toAddress, uint256 amountWithdrawn);
 
     receive() external payable {
-        revert("Cannot send ETH, only payable fucntion are allowed to send");
+        revert cannotSendEth();
      }
 
     mapping (address => uint256) accountBalance;
@@ -61,7 +63,7 @@ contract YourSmartBank {
     }
 
     fallback() external payable {
-        revert("Cannot send ETH, only payable fucntion are allowed to send");
+        revert error cannotSendEth();
      }
 
 }
