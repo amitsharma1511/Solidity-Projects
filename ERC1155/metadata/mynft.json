@@ -1,0 +1,31 @@
+{
+    "name" : "ERC1155 Token",
+    "description": "A test nft created using ERC1155",
+    "image" : "https://ipfs.io/ipfs/QmbQ9XkvTg6EWXMXrVcye9aCFba22dVEBmzFcFFFcdc88Y",
+    "attributes" : [
+        {
+            "trait_type": "property_1",
+            "value" : 9,
+            "max_value" : 10
+        },
+        {
+            "trait_type": "property_2",
+            "value" : 8,
+            "max_value" : 10
+        },
+        {
+            "display_type": "display_number",
+            "trait_type": "different_propoerty_1",
+            "value": 2
+        },
+        {
+            "display_type": "display_percentage",
+            "trait_type": "different_propoerty_2",
+            "value": 2
+        },
+        {
+            "trait_type": "booleanProperty",
+            "value": "True"
+        }
+    ]
+}
