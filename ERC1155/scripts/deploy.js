@@ -14,7 +14,7 @@ async function main() {
   await myNFT.deployed();
   console.log("MyNFT deployed to: ", myNFT.address);
 
-  await myNFT.mint(50,"https://ipfs.io/ipfs/Qmdt2hkpRxiKbKREvvbuomcMK6XCJz3rD4kLGkeSLur2Rn");
+  await myNFT.mint(30,"https://ipfs.io/ipfs/QmUCnhvAhrtx18DKj3NsNudBA6KDUwzS8E2JAhbaJpRViE");
 
   console.log("NFT successfully minted");
 
